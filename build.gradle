@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6"
+    }
+}
+
+apply plugin: "groovy"
+apply plugin: "maven-publish"
+apply plugin: "com.jfrog.bintray"
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+group = "github.jvman9527"
+version = "0.0.1"
+
+ext {
+    groovyVer = "2.4.6"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy:$groovyVer"
+    compile "org.codehaus.groovy:groovy-json:$groovyVer"
+    compile 'org.mongodb:mongo-java-driver:2.14.1'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+bintray {
+    user = bintray_user
+    key = bintray_api_key
+
+    publications = ["mavenJava"]
+    publish = true
+    pkg {
+        repo = "maven"
+        name = "groovy-mongo"
+        desc = "a more groovy way to use with mongo java driver"
+        vcsUrl = "https://github.com/jvman9527/groovy-mongo.git"
+        licenses = ["Apache-2.0"]
+        publicDownloadNumbers = true
+    }
+}
+
