@@ -1,5 +1,7 @@
 package github.jvman9527.groovy.mongo
 
+import com.mongodb.DBObject
+import com.mongodb.WriteResult
 import groovy.json.JsonSlurper
 
 import com.mongodb.BasicDBObject
@@ -71,6 +73,20 @@ class MongoCollection {
     }
 
     /**
+     * a more groovy insert
+     */
+    WriteResult insert(Map... document) {
+        dbCollection.insert(document as BasicDBObject[])
+    }
+
+    /**
+     * a more groovy insert
+     */
+    WriteResult insert(List<Map> document) {
+        dbCollection.insert(document as BasicDBObject[])
+    }
+
+    /**
      * json string to map util
      * @param jsonString
      */
@@ -79,3 +95,4 @@ class MongoCollection {
     }
 
 }
+
