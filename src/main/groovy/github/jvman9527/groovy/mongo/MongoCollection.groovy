@@ -35,6 +35,24 @@ class MongoCollection {
     }
 
     /**
+     * a more groovy distinct
+     * @param fieldName
+     * @param query
+     */
+    List distinct(String fieldName, Map query) {
+        dbCollection.distinct(fieldName, query as BasicDBObject)
+    }
+
+    /**
+     * a more groovy distinct
+     * @param fieldName
+     * @param query
+     */
+    List distinct(Map query, String fieldName) {
+        dbCollection.distinct(fieldName, query as BasicDBObject)
+    }
+
+    /**
      * a more groovy findAndModify
      * @param args
      */
