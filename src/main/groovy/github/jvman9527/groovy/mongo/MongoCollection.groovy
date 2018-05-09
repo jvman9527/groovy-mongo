@@ -53,6 +53,15 @@ class MongoCollection {
     }
 
     /**
+     * a more groovy count
+     * @param query
+     * @return
+     */
+    Long count(Map query) {
+        dbCollection.count(query as BasicDBObject)
+    }
+
+    /**
      * a more groovy findAndModify
      * @param args
      */
