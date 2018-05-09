@@ -11,7 +11,7 @@ class MongoCursor {
     @Delegate
     DBCursor dbCursor
 
-    public MongoCursor(DBCursor dbCursor) {
+    MongoCursor(DBCursor dbCursor) {
         this.dbCursor = dbCursor
     }
 
@@ -19,9 +19,19 @@ class MongoCursor {
      * a more groovy sort
      * @param fields
      */
-    public MongoCursor sort(Map fields) {
+    MongoCursor sort(Map fields) {
         dbCursor.sort(fields as BasicDBObject)
         this
     }
 
+    /**
+     * a more groovy limit
+     * @param limit
+     */
+    MongoCursor limit(int limit) {
+        dbCursor.limit(limit)
+        this
+    }
+
 }
+
