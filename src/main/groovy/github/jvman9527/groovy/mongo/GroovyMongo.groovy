@@ -3,11 +3,17 @@ package github.jvman9527.groovy.mongo
 import com.mongodb.Mongo
 import com.mongodb.MongoClient
 import com.mongodb.MongoClientURI
+import github.jvman9527.groovy.mongo.transformer.GStringTransformer
+import org.bson.BSON
 
 /**
  * MongoDB driver DBCollection delegation
  */
 class GroovyMongo {
+
+    static {
+        BSON.addEncodingHook(GString, new GStringTransformer())
+    }
 
     @Delegate
     Mongo mongoClient

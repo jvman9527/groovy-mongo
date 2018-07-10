@@ -16,19 +16,15 @@ sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
 
 group = "github.jvman9527"
-version = "0.0.4"
-
-ext {
-    groovyVer = "2.4.15"
-}
+version = "0.0.5"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile "org.codehaus.groovy:groovy:$groovyVer"
-    compile 'org.mongodb:mongo-java-driver:3.6.3'
+    compile "org.codehaus.groovy:groovy:2.4.15"
+    compile 'org.mongodb:mongo-java-driver:3.8.0'
 }
 
 publishing {
