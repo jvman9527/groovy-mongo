@@ -16,7 +16,7 @@ sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
 
 group = "github.jvman9527"
-version = "0.0.6"
+version = "0.0.7"
 
 repositories {
     mavenCentral()
