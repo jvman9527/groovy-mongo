@@ -11,6 +11,8 @@ import org.bson.BSON
  */
 class GroovyMongo {
 
+    final static MONGO_URI_PATTERN = "^mongodb(\\+srv)?://.*"
+
     static {
         BSON.addEncodingHook(GString, new GStringTransformer())
     }
@@ -23,7 +25,9 @@ class GroovyMongo {
     }
 
     GroovyMongo(String host) {
-        mongoClient = new MongoClient(host)
+        mongoClient = (host ==~ MONGO_URI_PATTERN) ?
+                        new MongoClient(new MongoClientURI(host)) :
+                        new MongoClient(host)
     }
 
     GroovyMongo(String host, Integer port) {
