@@ -125,6 +125,20 @@ class MongoCollection {
     }
 
     /**
+     * a more groovy remove
+     */
+    WriteResult remove(Map query) {
+        dbCollection.remove(query as BasicDBObject)
+    }
+
+    /**
+     * a more groovy remove
+     */
+    WriteResult removeAll() {
+        remove([:])
+    }
+
+    /**
      * old school aggregate support
      * @param ops
      * @return
